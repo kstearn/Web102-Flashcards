@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-![Video Walkthrough](https://i.imgur.com/wJrPmiW.gif)
+![Video Walkthrough](https://i.imgur.com/IAUEKdy.gif)
 
 
 GIF created with ...  
