@@ -11,6 +11,7 @@ export default function App() {
       </div>
       
       <Card />
+      
     </main>
   )
 }

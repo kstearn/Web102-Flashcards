@@ -46,6 +46,8 @@ const Card = () => {
       setIndex(index + 1);
     }
     setFlipped(false);
+    setGuess("");
+    setGuessBoxStyle("initial");
   }
 
   function handlePrev() {
@@ -53,22 +55,55 @@ const Card = () => {
       setIndex(index - 1);
     }
     setFlipped(false);
+    setGuess("");
+    setGuessBoxStyle("initial")
   }
 
   function handleRandom() {
     setIndex(Math.floor(Math.random() * 10));
     setFlipped(false);
+    setGuess("");
+    setGuessBoxStyle("initial")
   }
 
   const [index, setIndex] = useState(0);
 
   let card = cardData[index];
+
+  const [guess, setGuess] = useState("");
+  
+  const [guessBoxStyle, setGuessBoxStyle] = useState("initial");
+  
+  function handleSubmit() {
+    if (!flipped) {
+      if (card.back.split(" | ").includes(guess)) {
+        setGuessBoxStyle("correct");
+      }
+      else {
+        setGuessBoxStyle("incorrect");
+      }
+    }
+  }
   
   return(
     <div className="container">
       <div className="Card" onClick={handleFlip}>
         <p>{flipped ? card.back : card.front}</p>
       </div>
+      
+      <div className="guessBox">
+        <label>
+          Enter English translation:  
+          <input type="text"
+            value={guess}
+            onChange= {
+              e => setGuess(e.target.value)}
+            className={guessBoxStyle}
+          ></input>
+          <button onClick={handleSubmit}>Submit</button>
+        </label>
+      </div>
+      
       <div className="arrowButtons">
         <button id="prevArrow" onClick={handlePrev}>←</button>
         <button id="nextArrow" onClick={handleNext}>→</button>
